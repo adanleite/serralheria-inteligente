@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serralheria Pro - Estruturas e Portões Sob Medida</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            yellow: '#F59E0B',
+                            dark: '#0F172A',
+                            card: '#1E293B',
+                            light: '#F8FAFC'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-yellow rounded-lg flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20">
+                    <i class="fa-solid fa-hammer"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-white block leading-none">SERRALHERIA <span class="text-brand-yellow">PRO</span></span>
+                    <span class="text-xs text-slate-400 font-medium tracking-wider uppercase">Qualidade & Precisão</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex gap-8 font-medium text-slate-300">
+                <a href="#inicio" class="hover:text-brand-yellow transition">Início</a>
+                <a href="#servicos" class="hover:text-brand-yellow transition">Serviços</a>
+                <a href="#calculadora" class="hover:text-brand-yellow transition">Simular Orçamento</a>
+                <a href="#portfolio" class="hover:text-brand-yellow transition">Portfólio</a>
+            </nav>
+
+            <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento." 
+               target="_blank" 
+               class="bg-brand-yellow hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg transition flex items-center gap-2 shadow-md hover:shadow-amber-500/20">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Fazer Orçamento</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative py-20 lg:py-32 overflow-hidden border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <span class="inline-block px-3 py-1 bg-amber-500/10 text-brand-yellow rounded-full text-sm font-semibold mb-4 border border-amber-500/20">
+                    Serralheria & Estruturas Metálicas
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight mb-6">
+                    Soluções sob medida em <span class="text-brand-yellow">aço e metalon</span> para seu projeto.
+                </h1>
+                <p class="text-lg text-slate-400 mb-8 leading-relaxed">
+                    Fabricação e instalação de portões, grades, galpões, coberturas, guarda-corpos e móveis estilo industrial com acabamento profissional e alta durabilidade.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#calculadora" class="bg-brand-yellow hover:bg-amber-400 text-slate-950 font-bold px-8 py-4 rounded-xl transition text-center flex items-center justify-center gap-2 text-lg">
+                        <i class="fa-solid fa-calculator"></i>
+                        Simular Orçamento Agora
+                    </a>
+                    <a href="#portfolio" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-8 py-4 rounded-xl transition text-center border border-slate-700">
+                        Ver Projetos Realizados
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculadora de Orçamento Interativa -->
+    <section id="calculadora" class="py-20 bg-slate-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Simulador de Orçamento</h2>
+                <p class="text-slate-400">Selecione o tipo de serviço, informe as dimensões e tenha uma estimativa instantânea com envio direto para o WhatsApp.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Formulário -->
+                <div class="lg:col-span-7 bg-brand-card p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl">
+                    <form id="quoteForm" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Tipo de Serviço</label>
+                            <select id="serviceType" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-yellow">
+                                <option value="portao" data-price="350">Portão Basculante / Deslizante (m²)</option>
+                                <option value="grade" data-price="220">Grades de Proteção (m²)</option>
+                                <option value="cobertura" data-price="450">Cobertura / Mezanino (m²)</option>
+                                <option value="guarda_corpo" data-price="280">Guarda-Corpo / Corrimão (m linear)</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-300 mb-2">Largura / Comprimento (m)</label>
+                                <input type="number" id="widthInput" step="0.1" value="3.0" min="0.5" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-yellow">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-300 mb-2">Altura (m)</label>
+                                <input type="number" id="heightInput" step="0.1" value="2.2" min="0.5" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-yellow">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Opções Adicionais</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-3 p-3 bg-slate-900 rounded-lg cursor-pointer border border-slate-800 hover:border-slate-700">
+                                    <input type="checkbox" id="paintOption" class="w-4 h-4 text-brand-yellow rounded bg-slate-800 border-slate-700 focus:ring-0">
+                                    <span class="text-sm text-slate-300">Pintura especial / Primer Anticorrosivo (+15%)</span>
+                                </label>
+                                <label class="flex items-center gap-3 p-3 bg-slate-900 rounded-lg cursor-pointer border border-slate-800 hover:border-slate-700">
+                                    <input type="checkbox" id="motorOption" class="w-4 h-4 text-brand-yellow rounded bg-slate-800 border-slate-700 focus:ring-0">
+                                    <span class="text-sm text-slate-300">Motor de Automação com 2 Controles (+ R$ 650,00)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Observações / Detalhes</label>
+                            <textarea id="notesInput" rows="3" placeholder="Ex: Modelo de tubo 40x40, chapa búzios, cor preta..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-yellow text-sm"></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Card de Resultado -->
+                <div class="lg:col-span-5 bg-gradient-to-b from-slate-800 to-brand-card p-6 sm:p-8 rounded-2xl border border-amber-500/30 shadow-2xl sticky top-28">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-file-invoice-dollar text-brand-yellow"></i> Resumo da Estimativa
+                    </h3>
+
+                    <div class="space-y-4 mb-6 text-sm border-b border-slate-700 pb-6">
+                        <div class="flex justify-between text-slate-400">
+                            <span>Área Total Calculada:</span>
+                            <span id="calcArea" class="font-bold text-white">6.60 m²</span>
+                        </div>
+                        <div class="flex justify-between text-slate-400">
+                            <span>Valor Base do Serviço:</span>
+                            <span id="calcBasePrice" class="font-bold text-white">R$ 2.310,00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-400">
+                            <span>Adicionais Selecionados:</span>
+                            <span id="calcExtras" class="font-bold text-white">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="text-xs uppercase tracking-wider text-slate-400 block mb-1">Estimativa de Investimento</span>
+                        <div class="text-4xl font-black text-brand-yellow" id="calcTotal">R$ 2.310,00</div>
+                        <span class="text-xs text-slate-500 mt-1 block">* O valor final pode variar após a vistoria técnica no local.</span>
+                    </div>
+
+                    <button id="sendWhatsappBtn" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-4 rounded-xl transition flex items-center justify-center gap-3 text-lg shadow-lg shadow-green-600/20">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        Enviar Pedido via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria / Portfólio com Filtro JS -->
+    <section id="portfolio" class="py-20 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Projetos Executados</h2>
+                <p class="text-slate-400">Conheça alguns dos trabalhos finalizados por nossa equipe.</p>
+            </div>
+
+            <!-- Botões do Filtro -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12" id="filterContainer">
+                <button data-filter="all" class="filter-btn bg-brand-yellow text-slate-950 font-semibold px-5 py-2 rounded-full transition">Todos</button>
+                <button data-filter="portoes" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-5 py-2 rounded-full transition">Portões</button>
+                <button data-filter="estruturas" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-5 py-2 rounded-full transition">Estruturas</button>
+                <button data-filter="grades" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-5 py-2 rounded-full transition">Grades & Guarda-Corpos</button>
+            </div>
+
+            <!-- Grid de Fotos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+                <div class="portfolio-item portoes bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center text-slate-600">
+                        <i class="fa-solid fa-door-closed text-5xl"></i>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-white text-lg mb-1">Portão Basculante Industrial</h4>
+                        <p class="text-slate-400 text-sm">Estrutura em metalon 50x50 com pintura anticorrosiva preta.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item estruturas bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center text-slate-600">
+                        <i class="fa-solid fa-warehouse text-5xl"></i>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-white text-lg mb-1">Mezanino e Cobertura</h4>
+                        <p class="text-slate-400 text-sm">Estrutura metálica completa para espaço comercial.</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item grades bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center text-slate-600">
+                        <i class="fa-solid fa-bars text-5xl"></i>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-white text-lg mb-1">Guarda-Corpo Panorâmico</h4>
+                        <p class="text-slate-400 text-sm">Design moderno em aço galvanizado com cabos de aço.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="py-10 bg-slate-950 text-slate-500 text-sm border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>© 2026 Serralheria Pro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        // CONFIGURAÇÃO: Insira aqui o número do seu WhatsApp com DDD (apenas números)
+        const WHATSAPP_NUMBER = "5527999999999"; 
+
+        // Elementos da Calculadora
+        const serviceSelect = document.getElementById('serviceType');
+        const widthInput = document.getElementById('widthInput');
+        const heightInput = document.getElementById('heightInput');
+        const paintOption = document.getElementById('paintOption');
+        const motorOption = document.getElementById('motorOption');
+        const notesInput = document.getElementById('notesInput');
+
+        const calcAreaEl = document.getElementById('calcArea');
+        const calcBasePriceEl = document.getElementById('calcBasePrice');
+        const calcExtrasEl = document.getElementById('calcExtras');
+        const calcTotalEl = document.getElementById('calcTotal');
+        const sendWhatsappBtn = document.getElementById('sendWhatsappBtn');
+
+        // Função de Formatação de Moeda (BRL)
+        function formatCurrency(val) {
+            return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        // Cálculo do Orçamento
+        function calculateQuote() {
+            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+            const pricePerUnit = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+            const width = parseFloat(widthInput.value) || 0;
+            const height = parseFloat(heightInput.value) || 0;
+
+            const isLinear = serviceSelect.value === 'guarda_corpo';
+            const areaOrLength = isLinear ? width : (width * height);
+
+            const basePrice = areaOrLength * pricePerUnit;
+            let extras = 0;
+
+            if (paintOption.checked) {
+                extras += basePrice * 0.15; // 15% adicional para pintura
+            }
+            if (motorOption.checked) {
+                extras += 650.00; // Valor fixo do motor
+            }
+
+            const total = basePrice + extras;
+
+            // Atualizar Interface
+            calcAreaEl.textContent = isLinear ? `${width.toFixed(2)} m linear` : `${areaOrLength.toFixed(2)} m²`;
+            calcBasePriceEl.textContent = formatCurrency(basePrice);
+            calcExtrasEl.textContent = formatCurrency(extras);
+            calcTotalEl.textContent = formatCurrency(total);
+
+            return {
+                service: selectedOption.text,
+                dimension: isLinear ? `${width}m (linear)` : `${width}m x ${height}m (${areaOrLength.toFixed(2)}m²)`,
+                basePrice: formatCurrency(basePrice),
+                extras: formatCurrency(extras),
+                total: formatCurrency(total),
+                notes: notesInput.value.trim()
+            };
+        }
+
+        // Eventos dos Inputs da Calculadora
+        [serviceSelect, widthInput, heightInput, paintOption, motorOption, notesInput].forEach(element => {
+            element.addEventListener('input', calculateQuote);
+            element.addEventListener('change', calculateQuote);
+        });
+
+        // Enviar Orçamento para o WhatsApp
+        sendWhatsappBtn.addEventListener('click', () => {
+            const data = calculateQuote();
+            
+            let message = `*SOLICITAÇÃO DE ORÇAMENTO - SERRALHERIA*\n\n`;
+            message += `*Serviço:* ${data.service}\n`;
+            message += `*Dimensões:* ${data.dimension}\n`;
+            message += `*Adicionais:* ${paintOption.checked ? 'Pintura ' : ''}${motorOption.checked ? 'Motor ' : ''}${(!paintOption.checked && !motorOption.checked) ? 'Nenhum' : ''}\n`;
+            if (data.notes) {
+                message += `*Observações:* ${data.notes}\n`;
+            }
+            message += `\n*Estimativa Total:* ${data.total}\n\n`;
+            message += `Gostaria de agendar uma vistoria técnica para confirmar o orçamento!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Filtro Interativo do Portfólio
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Atualizar estilos dos botões
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-yellow', 'text-slate-950');
+                    b.classList.add('bg-slate-800', 'text-slate-300');
+                });
+                btn.classList.remove('bg-slate-800', 'text-slate-300');
+                btn.classList.add('bg-brand-yellow', 'text-slate-950');
+
+                // Filtrar Itens
+                const filter = btn.getAttribute('data-filter');
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Executar cálculo inicial ao carregar a página
+        calculateQuote();
+    </script>
+</body>
+</html>
